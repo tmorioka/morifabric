@@ -21,6 +21,8 @@ lv
 mercurial
 ncurses
 nkf
+pyenv
+pyenv-virtualenv
 python3
 spdlog
 sqlite
