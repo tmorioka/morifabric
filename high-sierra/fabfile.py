@@ -3,6 +3,8 @@
 
 import os
 
+from github import Github
+from github.GithubException import GithubException
 import fabric.contrib.files
 from fabric.api import env, sudo, execute, run, put
 
@@ -164,3 +166,39 @@ def python_environment():
     run(" ".join([
         "pip3", "install", "ipython"
     ]))
+
+
+def github():
+    """ GitHubで管理しているリポジトリを取得する """
+
+    assert hasattr(env, "github_access_token"), \
+        "This command requires github_access_token. " \
+        "Please specify --set github_access_token=<your_github_access_token>."
+
+    cli = Github(env.github_access_token)
+    base_dir = env.base_dir if hasattr(env, "base_dir") else "~/workspace"
+
+    ssh_uri_tpl = "git@github.com:{user_name}/{repo_name}"
+    https_uri_tpl = "https://github.com/{user_name}/{repo_name}"
+
+    uri_tpl = https_uri_tpl if hasattr(env, "use_https") else ssh_uri_tpl
+
+    for repo in cli.get_user().get_repos():
+        user_name, repo_name = repo.full_name.split("/")
+        uri = uri_tpl.format(user_name=user_name, repo_name=repo_name)
+        try:
+            teams = list(repo.get_teams())
+        except GithubException:
+            teams = []
+
+        if len(teams) == 0:
+            dest_dir = os.path.join(base_dir, user_name, repo_name)
+            run(" ".join([
+                "git", "clone", uri, dest_dir
+            ]))
+        else:
+            for team in teams:
+                dest_dir = os.path.join(base_dir, team.name, repo_name)
+                run(" ".join([
+                    "git", "clone", uri, dest_dir
+                ]))
