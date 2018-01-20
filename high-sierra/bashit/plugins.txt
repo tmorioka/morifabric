@@ -1,0 +1,17 @@
+alias-completion
+base
+docker-compose
+docker
+edit-mode-vi
+fzf
+git-subrepo
+git
+go
+hg
+history
+osx
+python
+ssh
+subversion
+tmux
+visual-studio-code
