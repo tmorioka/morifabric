@@ -1,0 +1,12 @@
+clion
+docker
+drawio
+dropbox
+google-chrome
+google-japanese-ime
+iterm2
+microsoft-office
+pycharm-ce
+slack
+skype
+visual-studio-code
