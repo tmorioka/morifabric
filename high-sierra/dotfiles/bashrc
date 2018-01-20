@@ -1,0 +1,11 @@
+# Golang from brew
+
+if [ -e /usr/local/opt/go/libexec ]; then
+  export GOROOT=/usr/local/opt/go/libexec
+  export GOPATH=$HOME
+  export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+fi
+
+# setting PATH
+
+export PATH=~/bin:${PATH}
