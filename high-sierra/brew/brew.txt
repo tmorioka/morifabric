@@ -21,6 +21,7 @@ lv
 mercurial
 ncurses
 nkf
+pandoc
 pyenv
 pyenv-virtualenv
 python3
