@@ -27,6 +27,7 @@ pyenv-virtualenv
 python3
 spdlog
 sqlite
+telnet
 tmux
 vim
 wget
