@@ -5,6 +5,7 @@ dropbox
 google-chrome
 google-japanese-ime
 iterm2
+libreoffice
 microsoft-office
 pycharm-ce
 slack
