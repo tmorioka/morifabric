@@ -12,3 +12,4 @@ pycharm-ce
 slack
 skype
 visual-studio-code
+virtualbox
